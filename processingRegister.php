@@ -2,23 +2,25 @@
 
 
 print_r($_POST);
-//collecting the data
-$first_name =$_POST["first_name"];
-$last_name =$_POST["last_name"];
-$email =$_POST["email"];
-$password =$_POST["password"];
-$designation =$_POST["designation"];
-$department =$_POST["department"];
+//collecting & validating data
+$errorCount = 0;
+$first_name =$_POST["first_name"] != "" ? $_POST["first_name"] : $errorCount++;
+$last_name =$_POST["last_name"] != "" ? $_POST["last_name"] : $errorCount++;
+$email =$_POST["email"] != "" ? $_POST["email"] : $errorCount++;
+$password =$_POST["password"] != "" ? $_POST["password"] : $errorCount++;
+$designation =$_POST["designation"] != "" ? $_POST["designation"] : $errorCount++;
+$department =$_POST["department"] != "" ? $_POST["department"] : $errorCount++;
+
+if($errorCount > 0){
+    //errormessage
+
+}
+else{
+    //continue to program
+
+}
 
 $errorArray =[];
-
-//Validating the data
-if($first_name == ""){
-    $errorArray = "First name cannot be blank";
-}
- if($last_name == ""){
-    $errorArray = "Last name cannot be blank";
-}
 
 print_r($errorArray);
 

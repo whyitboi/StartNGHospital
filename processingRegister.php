@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-print_r($_POST);
 //collecting & validating data
 $errorCount = 0;
 $first_name =$_POST["first_name"] != "" ? $_POST["first_name"] : $errorCount++;
@@ -40,7 +38,7 @@ else{
         "first_name" => $first_name,
         "last_name"=> $last_name,
         "email" => $email,
-        "password" => $password,
+        "password" => password_hash($password, PASSWORD_DEFAULT), //password hashing
         "gender" => $gender,
         "designation" => $designation,
         "department" => $department
@@ -51,6 +49,7 @@ else{
     for($counter = 0; $counter <= $countAllUsers; $counter++){
         
         $currentUser = $allusers[$counter];
+
         if($currentUser == $email.".json"){
             $_SESSION['error'] = "Registeration failed, User already exists";
             header("Location: register.php");
@@ -60,9 +59,10 @@ else{
 
 
     file_put_contents("db/users/staff/".$email.".json", json_encode($userObject));
-    print "<script type='text/javascript'>alert('Registeration Succesful')</script>";
+   // print "<script type='text/javascript'>alert('Registeration Succesful')</script>";
+   // session_unset();
+
     $_SESSION['message'] = "You can login in now as ". $first_name;
-    session_unset();
     header("Location: login.php");
 }
 

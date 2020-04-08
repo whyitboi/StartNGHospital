@@ -1,0 +1,10 @@
+{
+    "id": 5,
+    "first_name": "Tyrion",
+    "last_name": "Lannister",
+    "email": "littelLion@castilerock.mail",
+    "password": "$2y$10$IAdikAseODCJWwGZ6HikXesOy9.Hp.uLVk7ZhQKNoItzidZ6HBopm",
+    "gender": "Male",
+    "designation": "Patients",
+    "department": "Addiction"
+}
